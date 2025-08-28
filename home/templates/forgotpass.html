@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-image: url('{% static 'images/fg.jpg' %}');
+        background-size: cover;
+        background-position: center; 
+        background-repeat: no-repeat;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #333; 
+        text-align: center;
+        margin-top: 30px;
+    }
+    .message {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 3px solid #ccc;
+        font-size: 2.5rem;
+    }
+
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>Forgot Password</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <button type="submit">Reset Password</button>
+</form>
+{% endblock %}

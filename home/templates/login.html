@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block css %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('{% static 'images/bg.jpg' %}');
+        background-size: cover;
+        background-position: center; 
+        background-repeat: no-repeat;
+    }
+
+    .head1 {
+        color: #FBAD30;
+        font-size: 2rem;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    .head2 {
+        color: #EF4926;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="row py-0 p-0 bg-transparent rounded shadow-sm">
+    <div class="col-lg-5 mx-auto text-center">
+        <div class="col-lg-12">
+            <div class="bg-primary rounded-pill px-4 py-3 text-uppercase font-weight-bold" style="color: black; font-weight: bold;">
+                Login Details
+            </div>
+            <br>
+            {% if messages %}
+                {% for message in messages %}
+                    <script>
+                        alert("{{ message }}");  // Display alert for each message
+                    </script>
+                {% endfor %}
+            {% endif %}
+            <form class="row g-2" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <label for="username" class="form-label" style="font-weight: bold; color: white; font-size: 22px;">
+                        Username
+                    </label>
+                    <input type="text" placeholder="Enter Username" style="text-align: center;" class="form-control" id="username" name="username" required>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="password" class="form-label" style="font-weight: bold; color: white; font-size: 22px;">
+                        Password
+                    </label>
+                    <div class="input-group">
+                        <input type="password" placeholder="Enter Password" style="text-align: center;" class="form-control" id="password" name="password" required>
+                        <button class="btn btn-secondary" type="button" id="togglePassword">
+                            Show
+                        </button>
+                    </div>
+                </div>
+            
+                    <button type="submit" class="btn btn-primary">Login</button>
+                
+            </form>
+            <p class="mt-3">
+                <a href="{% url 'forgotpass' %}" style="color: white;">Forgot Password?</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#togglePassword').click(function() {
+        var passwordInput = $('#password');
+        passwordInput.attr('type', passwordInput.attr('type') === 'password' ? 'text' : 'password');
+        $(this).text(passwordInput.attr('type') === 'password' ? 'Show' : 'Hide');
+    });
+});
+</script>
+{% endblock %}

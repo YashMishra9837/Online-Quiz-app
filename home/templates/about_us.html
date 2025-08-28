@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<h2>About Us</h2>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('{% static 'images/about1.png' %}');
+        background-size: cover;
+        background-position: center; 
+        background-repeat: no-repeat;
+    }
+</style>
+
+
+<br> <br>
+<p style="text-align: justify; font-weight: bold; color: black;font-size: 22px;">
+    Welcome to Quizzify Pro !
+
+At Quizzify Pro,  we are passionate about knowledge and learning.<br> Our goal is to provide an engaging and interactive platform for users to explore a wide range<br> of topics through quizzes. Whether you are a student looking to test your knowledge, a professional<br> seeking a mental challenge, or just someone who enjoys a good quiz, we've got you covered!
+</p>
+
+<h3>Contact Us</h3>
+<ul>
+    <li style="margin-left:15px"><a href = "mailto: ankitshahi895@gmail.com">Send Email : Ankit</a></li>
+    <li style="margin-left:15px"><a href = "https://www.instagram.com/_ankit__shahi/">Instagram : Ankit</a></li>
+</ul>
+{% endblock %}

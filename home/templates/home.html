@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('{% static 'images/home.jpg' %}');
+      background-size: cover;
+      background-position: center; 
+      background-repeat: no-repeat;
+  }
+  .head1 {
+    color: #FBAD30;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 50px;
+  }
+
+  .head2 {
+    color: #EF4926;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div style="text-align: center;">
+  {% if user.is_authenticated %}
+  <h1 style="color: white; font-size: 50px;">Hello {{ request.user }}</h1>
+  
+  {% endif %}
+<h1 style="text-align: center; font-weight: bold; color: white;">
+    Welcome to Quizzify Pro !
+</h1>
+
+<img src="{% static 'images/logo.jpg' %}" alt="Quizzify Logo" style="max-width: 30%; height: auto;">
+
+</div>
+{% endblock %}
